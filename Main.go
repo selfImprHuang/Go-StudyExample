@@ -19,4 +19,7 @@ func main() {
 	//--------------------------测试json包的转换功能
 	example.JsonMarshalTest()
 	example.JsonUnmarshalTest()
+
+	example.TestClone()
+
 }
