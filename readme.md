@@ -6,3 +6,18 @@ json与struct之间转换处理工具使用示例
 
 
 2020/5/15 : 添加CloneExample,测试go语言的对象内存和深度克隆的实现关于对象克隆可参考文章[知乎-](https://zhuanlan.zhihu.com/p/59125443)、[知乎-](https://zhuanlan.zhihu.com/p/58065429)
+
+
+2020/7/8 : 添加两种二维码生成使用示例，添加两种图片压缩方式、添加水印示例，添加文字到图片
+
+
+# mod vendor模式加载包
+通过go mod的方式加载的github上面的包会有报红的问题，但是包本身是可以运行的，这样就是会有一个问题，如果你想要点击去看方法的内容，没办法做到
+
+查阅了网上提供的处理方式，通过设置GOPATH 和Go Modules(vgo)可以解决相应的问题，但是我在这样处理之后依然会出现报红的问题
+
+后面通过使用vendor包的方式来处理，就避免了报红的问题
+
+处理步骤如下 ：
+- 通过 go get github.com/kardianos/govendor 命令下载govendor命令
+- 通过 go mod vendor 切换到vendor管理

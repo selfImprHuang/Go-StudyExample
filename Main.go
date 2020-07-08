@@ -6,20 +6,28 @@
 
 package main
 
-import "Go-StudyExample/example"
+import (
+	"Go-StudyExample/example"
+)
 
 func main() {
-	//--------------------------测试mapStructure的功能-----
-	//这边的四种使用方式差别感觉不是很大...
-	example.MapStructureTestFunc()
-	example.MapStructureTestFunc1()
-	example.MapStructureTestFunc2()
-	example.MapStructureTestFunc3()
+	////--------------------------测试mapStructure的功能-----
+	////这边的四种使用方式差别感觉不是很大...
+	//example.MapStructureTestFunc()
+	//example.MapStructureTestFunc1()
+	//example.MapStructureTestFunc2()
+	//example.MapStructureTestFunc3()
+	//
+	////--------------------------测试json包的转换功能
+	//example.JsonMarshalTest()
+	//example.JsonUnmarshalTest()
+	//
+	////克隆测试
+	//example.TestClone()
+	//
+	////二维码测试
+	//example.QrCodeTest()
 
-	//--------------------------测试json包的转换功能
-	example.JsonMarshalTest()
-	example.JsonUnmarshalTest()
-
-	example.TestClone()
-
+	//图片测试
+	example.ImageTest()
 }
