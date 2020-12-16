@@ -4,7 +4,7 @@
  *  @Description：
  */
 
-package Snowflake
+package snowflake
 
 import (
 	"errors"
