@@ -6,9 +6,12 @@
 
 package originGoLanguage
 
-import "fmt"
+import (
+	"fmt"
+	"testing"
+)
 
-func TestQuote() {
+func TestQuote(t *testing.T) {
 	x, y := "i am x", "i am y"
 
 	fmt.Println("回参的值2")

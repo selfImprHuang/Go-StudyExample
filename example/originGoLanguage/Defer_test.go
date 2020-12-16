@@ -8,10 +8,11 @@ package originGoLanguage
 
 import (
 	"fmt"
+	"testing"
 	"time"
 )
 
-func TestDefer() {
+func TestDefer(t *testing.T) {
 	//defer会在所有函数执行完成之后才进行执行
 	testDeferExe()
 	//defer产生的值是在对应位置的值，后面的变化不会产生影响
@@ -22,7 +23,7 @@ func TestDefer() {
 	testDeferRecoverOut() //外层异常捕获
 }
 
-func TestCtripException() {
+func TestCtripException(t *testing.T) {
 	fmt.Println("测试不进行捕获的情况")
 	testNotDefer()
 

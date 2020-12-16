@@ -9,9 +9,10 @@ package originGoLanguage
 import (
 	"errors"
 	"fmt"
+	"testing"
 )
 
-func TestError() {
+func TestError(t *testing.T) {
 	fmt.Println("测试创建一个新的错误")
 	testNewError()
 

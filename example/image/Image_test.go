@@ -18,6 +18,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"testing"
 )
 
 const (
@@ -33,7 +34,7 @@ const (
 	wordPath      = "example/image/wordPath.png"        //携带文字的图片
 )
 
-func ImageTest() {
+func TestImage(t *testing.T) {
 
 	AddWordToImg() //设置文字到图片
 

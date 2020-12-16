@@ -4,18 +4,19 @@
  *  @Description：
  */
 
-package example
+package jsonPackage
 
 import (
 	"encoding/json"
 	"fmt"
+	"testing"
 	"time"
 )
 
 type Time time.Time
 
 const (
-	timeFormart = "2006-01-02 15:04:05"
+	timeFormat = "2006-01-02 15:04:05"
 )
 
 //-------------------结构体----------------
@@ -44,7 +45,7 @@ type json1 struct {
 /*
  * 测试序列化功能
  */
-func JsonMarshalTest() {
+func TestJsonMarshalTest(t *testing.T) {
 	j := json1{
 		Name:    "name",
 		Value:   "value",
@@ -73,7 +74,7 @@ func JsonMarshalTest() {
 /*
  * 测试序列化功能
  */
-func JsonUnmarshalTest() {
+func TestJsonUnmarshalTest(t *testing.T) {
 	src := `{"id":5,"name":"xiaoming","birthday":"2016-06-30 16:09:51"}`
 	p := new(Person)
 	err := json.Unmarshal([]byte(src), &p)
@@ -89,7 +90,7 @@ func JsonUnmarshalTest() {
 
 //实现该方法，实现对应的时间处理，json应该是没有支持时间处理的
 func (t *Time) UnmarshalJSON(data []byte) (err error) {
-	now, err := time.ParseInLocation(`"`+timeFormart+`"`, string(data), time.Local)
+	now, err := time.ParseInLocation(`"`+timeFormat+`"`, string(data), time.Local)
 	*t = Time(now)
 	return
 }
@@ -98,13 +99,13 @@ func (t *Time) UnmarshalJSON(data []byte) (err error) {
  * 实现该方法，确定时间格式的输出
  */
 func (t Time) MarshalJSON() ([]byte, error) {
-	b := make([]byte, 0, len(timeFormart)+2)
+	b := make([]byte, 0, len(timeFormat)+2)
 	b = append(b, '"')
-	b = time.Time(t).AppendFormat(b, timeFormart)
+	b = time.Time(t).AppendFormat(b, timeFormat)
 	b = append(b, '"')
 	return b, nil
 }
 
 func (t Time) String() string {
-	return time.Time(t).Format(timeFormart)
+	return time.Time(t).Format(timeFormat)
 }

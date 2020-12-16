@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/goinggo/mapstructure"
+	"testing"
 )
 
 //-----------------------json数据---------------------
@@ -31,7 +32,7 @@ type Items struct {
 
 //---------------------------------测试方法------------------------
 
-func MapStructureTestFunc() {
+func TestMapStructureTestFunc(t *testing.T) {
 	var te entity2.Entity
 	m := make(map[string]interface{})
 	m["Num"] = 1
@@ -46,7 +47,7 @@ func MapStructureTestFunc() {
 	fmt.Print(te.Num, " ", te.S, " ", te.T)
 }
 
-func MapStructureTestFunc1() {
+func TestMapStructureTestFunc1(t *testing.T) {
 	var docMap map[string]interface{}
 	_ = json.Unmarshal([]byte(document), &docMap)
 
@@ -64,7 +65,7 @@ type NameDoc struct {
 	Name string `jpath:"name"`
 }
 
-func MapStructureTestFunc2() {
+func TestMapStructureTestFunc2(t *testing.T) {
 
 	sliceScript := []byte(document2)
 	var sliceMap []map[string]interface{}
@@ -80,7 +81,7 @@ func MapStructureTestFunc2() {
 	fmt.Println(myslice[0], " ", myslice[1])
 }
 
-func MapStructureTestFunc3() {
+func TestMapStructureTestFunc3(t *testing.T) {
 	docScript := []byte(document1)
 	var docMap map[string]interface{}
 	_ = json.Unmarshal(docScript, &docMap)

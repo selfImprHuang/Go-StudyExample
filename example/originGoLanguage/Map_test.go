@@ -6,9 +6,12 @@
 
 package originGoLanguage
 
-import "fmt"
+import (
+	"fmt"
+	"testing"
+)
 
-func TestMap() {
+func TestMap(t *testing.T) {
 	//没有初始化的是nil,不能进行赋值
 	var countryMap1 map[string]string
 	fmt.Println(countryMap1 == nil)

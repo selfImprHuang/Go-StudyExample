@@ -7,6 +7,7 @@
 package example
 
 import (
+	"Go-StudyExample/example"
 	"fmt"
 	"github.com/boombuler/barcode"
 	"github.com/boombuler/barcode/qr"
@@ -15,6 +16,7 @@ import (
 	"image/png"
 	"log"
 	"os"
+	"testing"
 )
 
 const (
@@ -26,7 +28,7 @@ const (
 	qrcode2 = "example/image/log_qrcode1.png"
 )
 
-func QrCodeTest() {
+func TestQrCode(t *testing.T) {
 
 	fmt.Printf("通过github.com/skips/go-qrcode 实现生成二维码")
 
@@ -49,7 +51,7 @@ func QrCodeTest() {
 	} else {
 		qrCode1.BackgroundColor = color.RGBA{250, 250, 50, 255} //设置背景色
 		qrCode1.ForegroundColor = color.Black                   //设置二维码内背景色
-		qrCode1.WriteFile(256, qrcode2)
+		_ = qrCode1.WriteFile(256, qrcode2)
 	}
 
 	//------------------------------------------------------------------------------------------------
@@ -58,20 +60,20 @@ func QrCodeTest() {
 	content := "https://zhuanlan.zhihu.com/p/59125443" //二维码内容信息
 
 	code, err2 := qr.Encode(content, qr.L, qr.Unicode) //对二维码进行编码
-	assert(err2)
+	example.Assert(err2)
 
 	img, err3 := barcode.Scale(code, 300, 300) //图片大小设置
-	assert(err3)
+	example.Assert(err3)
 
 	file, err4 := os.Create("F:/Go_BySelf/src/Go-StudyExample/example/image/qr_code.png") //创建文件
-	assert(err4)
+	example.Assert(err4)
 
 	err5 := png.Encode(file, img) //图片编码生成
 	//err6 := jpeg.Encode(file, img, &jpeg.Options{100}) //图像质量值为100，是最好的图像显示
-	assert(err5)
+	example.Assert(err5)
 
 	err6 := file.Close()
-	assert(err6)
+	example.Assert(err6)
 
 	//------------------------------------------------------------------------------------------------
 

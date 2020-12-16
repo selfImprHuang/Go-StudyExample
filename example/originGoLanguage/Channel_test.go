@@ -6,9 +6,12 @@
 
 package originGoLanguage
 
-import "fmt"
+import (
+	"fmt"
+	"testing"
+)
 
-func TestChannel() {
+func TestChannel(t *testing.T) {
 
 	list := []int{0, 1, 45, -12, 33, 90, -22, 100}
 	//通道的初始化

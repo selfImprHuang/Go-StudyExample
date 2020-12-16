@@ -6,9 +6,12 @@
 
 package originGoLanguage
 
-import "fmt"
+import (
+	"fmt"
+	"testing"
+)
 
-func TestSlice() {
+func TestSlice(t *testing.T) {
 	//定义切片
 	var number []int
 	fmt.Println(number)

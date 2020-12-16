@@ -9,9 +9,10 @@ package originGoLanguage
 import (
 	"fmt"
 	"net"
+	"testing"
 )
 
-func NetTest() {
+func TestNet(t *testing.T) {
 
 	//InterfaceAddrs 返回该系统的网络接口的地址列表。
 	addr, _ := net.InterfaceAddrs()

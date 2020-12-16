@@ -10,27 +10,16 @@ import (
 	"Go-StudyExample/entity"
 	"Go-StudyExample/util"
 	"fmt"
+	"testing"
 )
 
-func TestClone() {
-	fmt.Print("\n\n\n")
-	fmt.Print(" Go语言深克隆的测试：\n\n")
-
-	testJustBasicType()
-
-	testHasPointType()
-
+func TestClone(t *testing.T) {
 	fmt.Println("由此可见其实Go语言对于内存的分配，相对对象是独一份，对于对象的基本类型和值类型（结构体），应该是在其内部开辟了内存空间进行存储，而对于" +
 		"指针类型来说，直接使用它的地址（指针），不对结构体进行复制")
-	fmt.Println("")
-
-	testDeepCloneByEncode()
-
-	testDeepCloneByJsonPackage()
-
 }
 
-func testDeepCloneByJsonPackage() {
+//json包处理深度克隆
+func TestDeepCloneByJsonPackage(t *testing.T) {
 	rule := entity.SynthesisRule{
 		SynthesisId:    "112",
 		SynthesisNum:   0,
@@ -45,7 +34,8 @@ func testDeepCloneByJsonPackage() {
 	}
 }
 
-func testDeepCloneByEncode() {
+//序列化方式进行深度克隆
+func TestDeepCloneByEncode(t *testing.T) {
 	rule := entity.SynthesisRule{
 		SynthesisId:    "112",
 		SynthesisNum:   0,
@@ -63,7 +53,8 @@ func testDeepCloneByEncode() {
 	}
 }
 
-func testJustBasicType() {
+//结构体带基本类型
+func TestJustBasicType(t *testing.T) {
 	rule := entity.SynthesisRule{
 		SynthesisId:    "112",
 		SynthesisNum:   0,
@@ -83,7 +74,8 @@ func testJustBasicType() {
 
 }
 
-func testHasPointType() {
+//结构体带指针
+func TestHasPointType(t *testing.T) {
 	cmp := entity.SynthesisRuleCmp{
 		SynthesisRule: &entity.SynthesisRule{
 			SynthesisId:    "112",
@@ -104,7 +96,8 @@ func testHasPointType() {
 	}
 }
 
-func testHasPointTypeList() {
+//结构体带切片
+func TestHasPointTypeSlice(t *testing.T) {
 
 	cmp := entity.SynthesisRuleCmp{
 		SynthesisRule: &entity.SynthesisRule{

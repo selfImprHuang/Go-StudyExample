@@ -18,13 +18,6 @@ import (
 	"github.com/shirou/gopsutil/mem"
 )
 
-func TestGetCpuMessage(t *testing.T) {
-	DiskCheck()
-	OSCheck()
-	CPUCheck()
-	RAMCheck()
-}
-
 const (
 	B  = 1
 	KB = 1024 * B
@@ -33,7 +26,7 @@ const (
 )
 
 //服务器硬盘使用量
-func DiskCheck() {
+func TestDiskCheck(t *testing.T) {
 	u, _ := disk.Usage("/")
 	usedMB := int(u.Used) / MB
 	usedGB := int(u.Used) / GB
@@ -44,12 +37,12 @@ func DiskCheck() {
 }
 
 //OS
-func OSCheck() {
+func TestOSCheck(t *testing.T) {
 	fmt.Printf("goOs:%s,compiler:%s,numCpu:%d,version:%s,numGoroutine:%d\n", runtime.GOOS, runtime.Compiler, runtime.NumCPU(), runtime.Version(), runtime.NumGoroutine())
 }
 
 //CPU 使用量
-func CPUCheck() {
+func TestCPUCheck(t *testing.T) {
 	cores, _ := cpu.Counts(false)
 
 	cpus, err := cpu.Percent(time.Duration(200)*time.Millisecond, true)
@@ -69,7 +62,7 @@ func CPUCheck() {
 }
 
 //内存使用量
-func RAMCheck() {
+func TestRAMCheck(t *testing.T) {
 	u, _ := mem.VirtualMemory()
 	usedMB := int(u.Used) / MB
 	totalMB := int(u.Total) / MB
