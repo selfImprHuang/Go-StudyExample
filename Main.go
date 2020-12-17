@@ -7,13 +7,15 @@
 package main
 
 import (
-	"Go-StudyExample/example/originGoLanguage"
-	_ "Go-StudyExample/example/originGoLanguage/init"
+	"fmt"
+	"math"
 )
 
 func main() {
-
-	//go原生语言测试
-	originGoLanguage.TestOriginLang()
-
+	x := 0
+	for i := 1; i < 31; i++ {
+		x = x + 1<<i
+	}
+	fmt.Println(math.MaxInt32)
+	fmt.Println(x)
 }
