@@ -1,0 +1,2 @@
+[我是日志的前缀]2020/12/17 10:26:48.074272 F:/Go_BySelf/src/Go-StudyExample/example/originGoLanguage/Log_test.go:43: 我是一个写到文件中的日志
+<自定义Logger对象>2020/12/17 10:31:51 Log_test.go:56: 自定义Logger对象输出到文件
