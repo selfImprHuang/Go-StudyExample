@@ -12,7 +12,7 @@ import (
 	"testing"
 )
 
-func TestCast(t *testing.T) {
+func TestCastBasic(t *testing.T) {
 	// ToString
 	fmt.Println(cast.ToString("leedarjun"))        // leedarjun
 	fmt.Println(cast.ToString(8))                  // 8
