@@ -54,4 +54,10 @@ func TestCopier(t *testing.T) {
 	//不同的结构体数组的转换
 	_ = copier.Copy(&employees, &users)
 	fmt.Println(fmt.Sprintf("%#v\n", employee))
+
+	i := 10
+	var j int
+	err := copier.Copy(&i, &j)
+
+	fmt.Println(err, j)
 }
