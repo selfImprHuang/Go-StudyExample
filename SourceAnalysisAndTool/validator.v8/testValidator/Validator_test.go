@@ -7,7 +7,7 @@
 package testValidator
 
 import (
-	"Go-Tool/SourceAnalysisAndTool/validator.v8/sourceAnalysis/gopkg.in/go-playground/validator.v8"
+	. "Go-StudyExample/SourceAnalysisAndTool/validator.v8/sourceAnalysis/gopkg.in/go-playground/validator.v8"
 	"fmt"
 	"reflect"
 	"strconv"
@@ -35,11 +35,11 @@ func TestValidator(t *testing.T) {
 
 func testStruct() {
 	//添加结构体校验，对结构体进行处理之后，validator的标签还是会起作用
-	config := &validator.Config{
+	config := &Config{
 		TagName: "validate",
 	}
-	valid := validator.New(config)
-	valid.RegisterStructValidation(func(v *validator.Validate, structLevel *validator.StructLevel) {
+	valid := New(config)
+	valid.RegisterStructValidation(func(v *Validate, structLevel *StructLevel) {
 		c := structLevel.CurrentStruct.Interface().(Cat)
 		if c.Age < 100 {
 			fmt.Println("猫的岁数不能小于100")
@@ -64,10 +64,10 @@ func testStruct() {
 func testField() {
 	//如果注册了对应的Field，则会调用自定义的方法，不会再使用validator定义的标签
 	//这边测试了结构体和基本类型，都是如上述描述的这么处理
-	config := &validator.Config{
+	config := &Config{
 		TagName: "validate",
 	}
-	valid := validator.New(config)
+	valid := New(config)
 	valid.RegisterAliasValidation("ipe", "ip|ipv4|ipv6")
 
 	valid.RegisterCustomTypeFunc(func(field reflect.Value) interface{} {
@@ -114,11 +114,11 @@ func testTag() {
 		Name: "my name is wo-man",
 	}
 
-	config := &validator.Config{
+	config := &Config{
 		TagName: "validate",
 	}
-	valid := validator.New(config)
-	_ = valid.RegisterValidation("diy", func(v *validator.Validate, topStruct reflect.Value, currentStruct reflect.Value, field reflect.Value, fieldtype reflect.Type, fieldKind reflect.Kind, param string) bool {
+	valid := New(config)
+	_ = valid.RegisterValidation("diy", func(v *Validate, topStruct reflect.Value, currentStruct reflect.Value, field reflect.Value, fieldtype reflect.Type, fieldKind reflect.Kind, param string) bool {
 		s := field.Interface().(string)
 
 		i, _ := strconv.ParseInt(param, 0, 64)
@@ -145,10 +145,10 @@ func testAlias() {
 		Name: "213123123",
 	}
 
-	config := &validator.Config{
+	config := &Config{
 		TagName: "validate",
 	}
-	valid := validator.New(config)
+	valid := New(config)
 	valid.RegisterAliasValidation("ipe", "ip|ipv4|ipv6")
 	err := valid.Struct(m)
 	fmt.Println(err)
