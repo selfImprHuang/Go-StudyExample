@@ -5,3 +5,5 @@ container源码分析文章：https://blog.csdn.net/qq_34326321/article/details/
 copier源码分析文章：https://blog.csdn.net/qq_34326321/article/details/112177087
 
 mapstructure源码分析文章：https://blog.csdn.net/qq_34326321/article/details/113182689
+
+merge源码分析文章:https://blog.csdn.net/qq_34326321/article/details/113182689
